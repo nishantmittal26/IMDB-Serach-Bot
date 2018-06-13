@@ -22,8 +22,20 @@ namespace IMDBSerachBot.Dialogs
             // Calculate something for us to return
             int length = (activity.Text ?? string.Empty).Length;
 
-            // Return our reply to the user
-            await context.PostAsync($"You sent {activity.Text} which was {length} characters");
+            if (activity.Text.ToUpper() == "ADITI")
+            {
+                await context.PostAsync("Aditi is Nishant's wife :-)");
+            }
+            else if (activity.Text.ToUpper() == "NISHANT")
+            {
+                await context.PostAsync("Nishant is Aditi's Husband :-)");
+            }
+            else
+            {
+                // Return our reply to the user
+                await context.PostAsync($"You sent {activity.Text} which was {length} characters");
+            }
+
 
             context.Wait(MessageReceivedAsync);
         }
